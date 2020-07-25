@@ -328,7 +328,7 @@ namespace Microsoft.EntityFrameworkCore.Query.SqlExpressions
 
                     if (entityProjection.DiscriminatorExpression != null)
                     {
-                        AddToProjection(entityProjection.DiscriminatorExpression);
+                        AddToProjection(entityProjection.DiscriminatorExpression, "Discriminator");
                     }
 
                     result[keyValuePair.Key] = Constant(map);
@@ -443,7 +443,7 @@ namespace Microsoft.EntityFrameworkCore.Query.SqlExpressions
 
                 if (entityProjection.DiscriminatorExpression != null)
                 {
-                    AddToProjection(entityProjection.DiscriminatorExpression);
+                    AddToProjection(entityProjection.DiscriminatorExpression, "Discriminator");
                 }
 
                 _entityProjectionCache[entityProjection] = dictionary;
@@ -1143,7 +1143,7 @@ namespace Microsoft.EntityFrameworkCore.Query.SqlExpressions
                 ColumnExpression discriminatorExpression = null;
                 if (entityProjection.DiscriminatorExpression != null)
                 {
-                    discriminatorExpression = subquery.GenerateOuterColumn(entityProjection.DiscriminatorExpression);
+                    discriminatorExpression = subquery.GenerateOuterColumn(entityProjection.DiscriminatorExpression, "Discriminator");
                     projectionMap[entityProjection.DiscriminatorExpression] = discriminatorExpression;
                 }
 
